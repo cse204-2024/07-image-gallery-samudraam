@@ -21,26 +21,36 @@ function initialize() {
   }
 }
 //display Image Modal
-function displayImage(imageId){
-    let modal = document.createElement("div");
+function displayImage(imageId) {
+  console.log("this is " + imageId);
+  // let modal = document.createElement("div");
+  // modal.style.display = "none";
+  // modal.style.position = "fixed"
+  let myImg = document.getElementById(imageId);
+  imageId.width = 600;
+  imageId.height = 450;
+  document.getElementById(myImg).addEventListener("click", function () {
+    exitImage(myImg);
+  });
 
-
-    document.getElementById(imageId);
+  // let img = document.getElementById(imageId);
 }
 
 //On x close modal
-function exitImage(){
-
+function exitImage(myImg) {
+  let myImg = document.getElementById(imageId);
+  myImg.width = 600;
+  myImg.height = 450;
 }
 
 document.getElementById("img1").addEventListener("click", function () {
-  console.log("img1");
+  displayImage("img1");
 });
 
 document.getElementById("img2").addEventListener("click", function () {
-  console.log("img2");
+  displayImage("img2");
 });
 
 document.getElementById("img3").addEventListener("click", function () {
-  console.log("img3");
+  displayImage("img3");
 });
