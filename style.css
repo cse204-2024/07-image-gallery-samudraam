@@ -23,9 +23,6 @@ p {
   text-align: center;
   font-family: "Share Tech Mono", monospace;
   font-size: 20px;
-  background: -webkit-linear-gradient(#71faff, rgb(123, 47, 255));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .images {
