@@ -20,7 +20,7 @@ const images = [
 //Function Call
 initialize();
 function initialize() {
-  var imgGal = document.getElementById("image-gal");
+  const imgGal = document.getElementById("image-gal");
   for (i = 0; i < images.length; i++) {
     let imageElement = document.createElement("img");
     imageElement.src = images[i];
