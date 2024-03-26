@@ -14,6 +14,7 @@ const images = [
   "https://images.unsplash.com/photo-1534214526114-0ea4d47b04f2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8M3xwY3F1OGNxaG1pRXx8ZW58MHx8fHx8", //12
 ];
 
+console.log(images.length);
 //Function Call
 initialize();
 function initialize() {
@@ -35,8 +36,14 @@ function initialize() {
 function displayImage(imageId) {
   //get id of elm so we can dupe
   let text = [...imageId];
-  let id = text[3];
-  console.log(id);
+  let id = 0;
+  if (text.length == 4) {
+    id = text[3];
+    console.log(id);
+  } else {
+    id = text[3] + text[4];
+    console.log(id);
+  }
 
   //create modal + content + img  :< {i hate this}
   let displayModal = document.createElement("div");
@@ -116,6 +123,7 @@ function displayImage(imageId) {
 
   next.addEventListener("click", function () {
     displayModal.remove();
+    nextImg(id);
   });
 
   let prev = document.createElement("button");
@@ -135,17 +143,36 @@ function displayImage(imageId) {
 
   prev.addEventListener("click", function () {
     displayModal.remove();
+    prevImg(id);
   });
 
-  modalContent.appendChild(prev);
-  modalContent.appendChild(next);
+  if (id > 0) {
+    modalContent.appendChild(prev);
+  }
+
+  if (id < images.length - 1) {
+    modalContent.appendChild(next);
+  }
+
   modalContent.appendChild(closeButton);
   modalContent.appendChild(ie);
   displayModal.appendChild(modalContent);
   document.body.appendChild(displayModal);
 }
 
+function nextImg(id) {
+  let pI = parseInt(id);
+  let nI = "img" + (pI + 1);
+  console.log(nI);
+  displayImage(nI);
+}
 
+function prevImg(id) {
+  let pI = parseInt(id);
+  let nI = "img" + (pI - 1);
+  console.log(nI);
+  displayImage(nI);
+}
 
 document.getElementById("img0").addEventListener("click", function () {
   displayImage("img0");
@@ -158,3 +185,5 @@ document.getElementById("img1").addEventListener("click", function () {
 document.getElementById("img2").addEventListener("click", function () {
   displayImage("img2");
 });
+
+
