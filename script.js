@@ -81,7 +81,7 @@ function displayImage(imageId) {
   ie.className = "img-dis";
 
   let closeButton = document.createElement("button");
-  closeButton.innerHTML = "&times;";
+  closeButton.textContent = "X";
   closeButton.style.cssText = `
     position: absolute;
     top: 20px;
@@ -90,6 +90,7 @@ function displayImage(imageId) {
     background: none;
     margin-right:30px;
     color: white;
+    font-family: "VT323", monospace;
     font-size: 50px;
     cursor: pointer;
   `;
@@ -98,11 +99,53 @@ function displayImage(imageId) {
     displayModal.remove();
   });
 
+  let next = document.createElement("button");
+  next.textContent = ">";
+  next.style.cssText = `
+    position: absolute;
+    align-content: center;
+    right: 50px;
+    border: none;
+    background: none;
+    margin-right:30px;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 100px;
+    cursor: pointer;
+  `;
+
+  next.addEventListener("click", function () {
+    displayModal.remove();
+  });
+
+  let prev = document.createElement("button");
+  prev.textContent = "<";
+  prev.style.cssText = `
+    position: absolute;
+    align-content: center;
+    left: 50px;
+    border: none;
+    background: none;
+    margin-right:30px;
+    color: white;
+    font-family: "VT323", monospace;
+    font-size: 100px;
+    cursor: pointer;
+  `;
+
+  prev.addEventListener("click", function () {
+    displayModal.remove();
+  });
+
+  modalContent.appendChild(prev);
+  modalContent.appendChild(next);
   modalContent.appendChild(closeButton);
   modalContent.appendChild(ie);
   displayModal.appendChild(modalContent);
   document.body.appendChild(displayModal);
 }
+
+
 
 document.getElementById("img0").addEventListener("click", function () {
   displayImage("img0");
